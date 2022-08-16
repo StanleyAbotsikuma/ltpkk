@@ -1,0 +1,13 @@
+*{
+	padding: 0;
+	margin: 0;
+	}
+body
+{
+	/*background-image: url(../images/logo.jpg);*/
+background-size: 300px;
+-webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    height: 100vh;
+
+			}
