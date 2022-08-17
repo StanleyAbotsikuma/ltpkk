@@ -1,6 +1,63 @@
 <?php
 include_once("config.php");
+// $result = $dbConn->query("SELECT * FROM membership ORDER BY id DESC");
+$result = "";
+if($_POST){
+$cat = $_POST["cat"];
+	$search = $_POST["search"];
+	switch ($cat) {
+		case 'occupation':
+			$result = $dbConn->prepare("SELECT * FROM membership where mem_occupation=:search ORDER BY id DESC");
+			$result->execute(['search' => $search]);
+			break;
+			case 'age':
+
+			$s = $search;
+			$so = explode(" ",$s)[0];
+			
+
+
+
+			if ( $so == ">") {
+			$sn = explode(" ",$s)[1];
+				$result = $dbConn->prepare("SELECT * FROM membership where mem_age >:search ORDER BY id DESC");
+			$result->execute(['search' => $sn]);
+				# code...
+			} 
+
+			elseif ($so == "<") {
+				$sn = explode(" ",$s)[1];
+				$result = $dbConn->prepare("SELECT * FROM membership where mem_age <:search ORDER BY id DESC");
+			$result->execute(['search' => $sn]);
+			}
+			elseif ($so == "<=") {
+				$sn = explode(" ",$s)[1];
+				$result = $dbConn->prepare("SELECT * FROM membership where mem_age <=:search ORDER BY id DESC");
+			$result->execute(['search' => $sn]);
+			}
+			elseif ($so == ">=") {
+				$sn = explode(" ",$s)[1];
+				$result = $dbConn->prepare("SELECT * FROM membership where mem_age >=:search ORDER BY id DESC");
+			$result->execute(['search' => $sn]);
+			}
+			else
+			{
+				$so = explode(" ",$s)[0];
+			$result = $dbConn->prepare("SELECT * FROM membership where mem_age =:search ORDER BY id DESC");
+			$result->execute(['search' => $so]);	
+			}
+			
+			break;
+		
+		default:
+			
+			break;
+	}
+}
+else
+{
 $result = $dbConn->query("SELECT * FROM membership ORDER BY id DESC");
+}
 // while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 //     echo "<YourHTML>";
 //     echo "<YourHTML>".$row['id']."</YourHTML>";
@@ -84,11 +141,24 @@ $result = $dbConn->query("SELECT * FROM membership ORDER BY id DESC");
 				margin-top: 5px;
 				margin-bottom: 5px;
 				cursor: pointer;
-
 			}
 			.a_member:hover
 			{
 				background-color: #9ba3aa
+			}
+			option
+			{
+				padding:10px;box-sizing: border-box;text-align: center;
+			}
+			td
+			{
+				width: 200px;
+				text-align: center;
+				border-left: solid 1px rgb(232, 232, 232);
+
+			}
+			td h3{
+				padding-top: 60px
 			}
 		</style>
 	</head>
@@ -97,53 +167,97 @@ $result = $dbConn->query("SELECT * FROM membership ORDER BY id DESC");
 			<div style="width: 100%;height: 150px;">
 				<div class="row">
 					<div class="col-2">
-						<img src="assets/images/logo.jpg" style="height: 150px;width: ">
-					</div>
-					<div class="col" style="background-color:#04428d">
-						<h1  style="    text-align: center;
-						font-size: -webkit-xxx-large;
-						color: white;
-						margin-left: -50px;
-						padding-top: 30px;
-						">
-						REGISTERED MEMBERS
-						</h1>
+						<a href="index.php"><img src="assets/images/logo.jpg" style="height: 150px; ">
+						</a></div>
+						<div class="col" style="background-color:#04428d">
+							<h1  style="    text-align: center;
+							font-size: -webkit-xxx-large;
+							color: white;
+							margin-left: -50px;
+							padding-top: 30px;
+							">
+							REGISTERED MEMBERS
+							</h1>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div style="width: 100%">
-				<?php
-				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				
+				<div class="container-fiuld" style="padding: 0;margin-top:5px;background-color:#00000024">
+					<form  method="POST" action="">
+						<div class="row " style="padding: 20px;margin:0;box-sizing: border-box;">
+							<div class="col-md-3">
+								<select name="cat" id="select" required style="width: 100%;height: 100%">
+									<option value=""  >- - -</option>
+									<option value="occupation" >Occupation</option>
+									<option value="age" >Age</option>
+									
+								</select>
+								
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="search" required>
+								
+							</div>
+							<div class="col-md-3">
+								<button type="submit" class="btn btn-secondary btn-block" style="width: 100%;height: 100%;background-color: white;color: #04428d">Search Results</button>
+								
+							</div>
+							
+						</div>
+						
+						
+					</form>
+				</div>
+				
+				<br>
+				<br>
+				
+				<div style="width: 100%;margin: auto;">
+					<table class="table table-striped">
+						<tbody>
+					<?php
+					while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 					?>
+
+					<tr>
+<!-- 
 					<a href="member.php?mem_id=<?php echo $row['mem_id'];?>" style="text-decoration: none;
-    color: black;	">
-				<div class="a_member container">
-					<div class="row">
-						<div class="col"></div>
-						<div class="col-2"><h3><?php echo $row['id']; ?></h3></div>
-						<div class="col-2"><h3><?php echo $row['mem_id']; ?></h3></div>
-						<div class="col-2"><h3><?php echo $row['mem_firstname']; ?></h3></div>
-						<div class="col"><h3><?php echo $row['mem_othernames']; ?></h3></div>
-						<div class="col-2"><h3><?php echo $row['mem_lastname']; ?></h3></div>
-						<div class="col-2"><img src="passport_photos/<?php echo $row['mem_passport_photo']; ?>"style="width:100%;"></div>
-					</div>
+						color: black;	"> -->
+						<!-- <div class="a_member container"> -->
+							<!-- <div class="row"> -->
+								<!-- <div class="col"></div> -->
+								<td><h3><?php echo $row['id']; ?></h3></td>
+								<td><h3><?php echo $row['mem_id']; ?></h3></td>
+								<td><h3><?php echo $row['mem_firstname']; ?></h3></td>
+								<td><h3><?php echo $row['mem_lastname']; ?></h3></td>
+								<td><h3><?php echo $row['mem_telephone']; ?></h3></td>
+								<td><img src="passport_photos/<?php echo $row['mem_passport_photo']; ?>"style="width:200px;height: 200px"></td>
+
+								<td>
+									<a href="member.php?mem_id=<?php echo $row['mem_id'];?>" ><button class = "btn btn-success" style="margin-top: 60px;height: 50px">View</button>
+								</a>
+								 </td>
+							<!-- </div> -->
+						<!-- </div> -->
+					<!-- </a> -->
+				<!-- </tr> -->
+					<?php
+					
+					}
+					?>
+				</tbody>
+					</table>
 				</div>
-			</a>
-				<?php
-			
-				}
-				?>
+				<div style="width: 100%;height: 150px;background-color: #ed3c2a  ">
+					<h1  style="    text-align: center;
+					font-size: -webkit-xxx-large;
+					color: white;
+					margin-left: -50px;
+					padding-top: 30px;
+					">
+					&copy; 2022
+					</h1>
+				</div>
 			</div>
-			<div style="width: 100%;height: 150px;background-color: #ed3c2a  ">
-				<h1  style="    text-align: center;
-				font-size: -webkit-xxx-large;
-				color: white;
-				margin-left: -50px;
-				padding-top: 30px;
-				">
-				&copy; 2022
-				</h1>
-			</div>
-		</div>
-	</body>
-</html>
+		</body>
+	</html>

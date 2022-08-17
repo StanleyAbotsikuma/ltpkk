@@ -66,8 +66,8 @@ $memberRow = $result->fetch();
 			<div style="width: 100%;height: 150px;">
 				<div class="row">
 					<div class="col-2">
-						<img src="assets/images/logo.jpg" style="height: 150px;width: ">
-					</div>
+						<a href="index.php"><img src="assets/images/logo.jpg" style="height: 150px; ">
+					</a></div>
 					<div class="col" style="background-color:#04428d">
 						<h1  style="    text-align: center;
 						font-size: -webkit-xxx-large;
@@ -96,7 +96,7 @@ $memberRow = $result->fetch();
                     <div class="col-md-4"><label class="labels">First name</label><input type="text" value="<?php echo $memberRow['mem_firstname']; ?>" class="form-control" placeholder="first name" value=""></div>
                     <div class="col-md-4"><label class="labels">Last name</label><input type="text" class="form-control" value="<?php echo $memberRow['mem_lastname']; ?>" placeholder="surname"></div>
                     <div class="col-md-4"><label class="labels">Othernames</label><input type="text" class="form-control" value="<?php echo $memberRow['mem_othernames']; ?>" placeholder="othernames"></div>
-
+  <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control" value="<?php echo $memberRow['mem_age']; ?>"></div>
                       <div class="col-md-12"><label class="labels">Gender</label><input type="text" class="form-control" placeholder="enter gender" value="<?php echo $memberRow['mem_gender']; ?>"></div>
                           <div class="col-md-12"><label class="labels">Marital Status</label><input type="text" class="form-control"  value="<?php echo $memberRow['mem_marital_status']; ?>"></div>
                 </div>
@@ -125,8 +125,12 @@ $memberRow = $result->fetch();
                 <div class="col-md-12"><label class="labels">Current Position</label><input type="text" class="form-control"  value="<?php echo $memberRow['mem_current_position']; ?>"></div> <br>
                 <div class="col-md-12"><label class="labels">Have you ever been prosecuted?</label><input type="text" class="form-control"  value="<?php echo $memberRow['mem_prosecuted_status']; ?>"></div>
                  <br>
-                <div class="col-md-12"><label class="labels">if yes, reason?</label><textarea type="text" class="form-control" rows="15">
+                <div class="col-md-12"><label class="labels">if yes, reason?</label><textarea type="text" class="form-control" style="min-height: 150px">
                 	<?php echo $memberRow['mem_reason_for_prosecution']; ?>
+                </textarea></div>
+                 <br>
+                <div class="col-md-12"><label class="labels">Executive Remarks</label><textarea type="text" class="form-control" rows="" style="min-height: 150px">
+                	<?php echo $memberRow['mem_executive_remarks']; ?>
                 </textarea></div>
             </div>
         </div>

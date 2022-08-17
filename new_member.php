@@ -23,7 +23,7 @@
 				margin: auto;
 				
 			}
-			input[type=text]
+			input[type=text],input[type=number]
 			{
 				
 				height:60px;
@@ -54,8 +54,8 @@
 			<div style="width: 100%;height: 150px;">
 				<div class="row">
 					<div class="col-2">
-						<img src="assets/images/logo.jpg" style="height: 150px;width: ">
-					</div>
+						<a href="index.php"><img src="assets/images/logo.jpg" style="height: 150px; ">
+					</a></div>
 					<div class="col" style="background-color:#ed3c2a">
 						<h1  style="    text-align: center;
 						font-size: -webkit-xxx-large;
@@ -90,6 +90,10 @@
 					<div class='form-group'>
 						<label for='othernames'>Othernames <span style="font-size: unset;font-weight: normal;"><em>(optional)</em></span></label>
 						<input name='othernames' id='othernames' class='form-control' type='text' >
+					</div>
+					<div class='form-group'>
+						<label for='age'>Age</label>
+						<input name='age' id='age' class='form-control' type='Number' >
 					</div>
 					<div class='form-group'>
 						<label for='gender'>Gender</label>
@@ -165,11 +169,16 @@
 						<label for='MemReasonForProsecution'>Reason For Prosecution</label>
 						<textarea name='MemReasonForProsecution' id='MemReasonForProsecution' class='form-control' type='text' rows="10"></textarea>
 					</div>
-					
+					<br>
 					<div class='form-group'>
-						<img id="passport" src="#" />
+						<img id="passport" src="assets/images/passport_placehold.png" style="width: 200px;height: 200px" />
+						<br>
 						<label for='MemProfilePic'>Passport Photo</label>
 						<input name='MemProfilePic' id='MemProfilePic' class='form-control' type='file' onchange="readURL(this);" >
+					</div>
+							<div class='form-group'>
+						<label for='executive_remarks'>Executive Remarks</label>
+						<textarea name='executive_remarks' id='executive_remarks' class='form-control' type='text' rows="10"></textarea>
 					</div>
 					<br>
 					<br>
