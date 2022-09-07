@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 07:58 AM
+-- Generation Time: Sep 07, 2022 at 09:36 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -33,6 +33,7 @@ CREATE TABLE `membership` (
   `mem_firstname` text NOT NULL,
   `mem_lastname` text NOT NULL,
   `mem_othernames` text NOT NULL,
+  `mem_age` int(100) NOT NULL,
   `mem_gender` text NOT NULL,
   `mem_current_position` text NOT NULL,
   `mem_nia_card_number` text NOT NULL,
@@ -42,12 +43,14 @@ CREATE TABLE `membership` (
   `mem_occupation` text NOT NULL,
   `mem_telephone` text NOT NULL,
   `mem_region_hometown` text NOT NULL,
+  `mem_MemConstituency` text NOT NULL,
   `mem_marital_status` text NOT NULL,
   `mem_email_address` text NOT NULL,
   `mem_prosecuted_status` text NOT NULL,
   `mem_reason_for_prosecution` text DEFAULT NULL,
   `mem_passport_photo` text NOT NULL,
-  `mem_date_registered` date NOT NULL
+  `mem_date_registered` date NOT NULL,
+  `mem_executive_remarks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
