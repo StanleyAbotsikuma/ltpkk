@@ -11,3 +11,32 @@ background-size: 300px;
     height: 100vh;
 
 			}
+
+			/* .menu  */
+.menu 
+{
+	width:100%;
+	
+
+}
+.menu li {
+	float:left;
+	padding: 20px 30px;
+	list-style-type:none;
+	color:white;
+
+	
+	
+}
+.menu li a{
+	text-decoration:none;
+	cursor:pointer;
+	color:white
+
+}
+
+.menu li:hover
+{
+	background-color:green;
+	color:white
+}

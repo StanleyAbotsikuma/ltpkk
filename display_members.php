@@ -181,7 +181,14 @@ $result = $dbConn->query("SELECT * FROM membership ORDER BY id DESC");
 						</div>
 					</div>
 				</div>
-				
+				<div style="width: 100%;height:65px;padding:0;	background-color:#04428d;margin-top:0">
+				<ul class="menu">
+				<li><a href="index.php">Home</a></li>
+				<li><a  href="new_member.php">New Member</a></li>
+				<li><a  href="display_members.php">Registered Members</a></li>
+
+					</ul>
+			</div>
 				<div class="container-fiuld" style="padding: 0;margin-top:5px;background-color:#00000024">
 					<form  method="POST" action="">
 						<div class="row " style="padding: 20px;margin:0;box-sizing: border-box;">
